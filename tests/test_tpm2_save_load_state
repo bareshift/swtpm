@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Run the test_save_load_encrypted_state with swtpm_ioctl using the
-# read/write interface rather than ioctl
-export VTPM_NAME="vtpm-test-tpm2-save-load-state"
 cd "$(dirname "$0")"
 
 export SWTPM_IOCTL_BUFFERSIZE=100

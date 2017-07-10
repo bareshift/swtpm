@@ -17,9 +17,6 @@ SWTPM_INTERFACE=${SWTPM_INTERFACE:-cuse}
 SWTPM_CMD_UNIX_PATH=${TPM_PATH}/unix-cmd.sock
 SWTPM_CTRL_UNIX_PATH=${TPM_PATH}/unix-ctrl.sock
 
-[ "${SWTPM_INTERFACE}" == "cuse" ] && source ${DIR}/test_cuse
-source ${DIR}/common
-
 logfile=$(mktemp)
 
 function cleanup()
@@ -33,6 +30,9 @@ function cleanup()
 }
 
 trap "cleanup" EXIT
+
+[ "${SWTPM_INTERFACE}" == "cuse" ] && source ${DIR}/test_cuse
+source ${DIR}/common
 
 rm -f $STATE_FILE $VOLATILE_STATE_FILE 2>/dev/null
 
